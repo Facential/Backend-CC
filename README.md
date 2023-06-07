@@ -3,7 +3,7 @@
 This API allows you to classify skin types based on facial images and retrieve skincare recommendations for each skin type. It also provides endpoints to retrieve classification results, delete classification results, and get skincare recommendations for different skin types.
 
 ## Base URL
-http://34.101.153.119:8080/
+http://34.128.93.240:8080/
 
 # Endpoints
 ## GET /
