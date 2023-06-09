@@ -3,7 +3,8 @@
 This API allows you to classify skin types based on facial images and retrieve skincare recommendations for each skin type. It also provides endpoints to retrieve classification results, delete classification results, and get skincare recommendations for different skin types.
 
 ## Base URL
-http://34.101.100.21:8080/
+- www.facential.site
+- http://34.101.100.21/
 
 # Endpoints
 ## GET /
@@ -86,13 +87,13 @@ user_uid: The unique identifier of the user.
 ## DELETE /deleteall/{user_uid}
 This endpoint is used to delete all classification results and associated images for a specific user UID.
 
-###Request
+### Request
 ```
 DELETE /deleteall/{user_uid}
 ```
 user_uid: The unique identifier of the user.
 
-###Response
+### Response
 • Success (200 OK)
 ```
 {
@@ -103,5 +104,47 @@ user_uid: The unique identifier of the user.
 ```
 {
   "message": "Classification results not found."
+}
+```
+## GET /recommendation
+This endpoint retrieves skincare recommendations based on weather and air pollution data.
+
+### Request
+```
+GET /recommendation
+Content-Type: multipart/form-data
+latitude: <latitude>
+longitude: <longitude>
+```
+
+### Response
+• Success (200 OK)
+Example response body:
+```
+{
+    "temperature": 28,
+    "pollution_index": 75,
+    "skincare_recommendation": "Use oil-free and lightweight skincare products to prevent excessive oiliness. Apply a physical barrier like a mask or use anti-pollution skincare products."
+}
+```
+- temperature (number): The current temperature in Celsius.
+- pollution_index (number or null): The air pollution index. If not available, it will be null.
+- skincare_recommendation (string): The recommended skincare routine based on the temperature and pollution index.
+
+• Error (400 Bad Request)
+The request was missing the required parameters (latitude and longitude).
+Example response body:
+```
+{
+    "message": "Latitude and longitude are required parameters."
+}
+```
+
+• Error (500 Internal Server Error)
+There was an error fetching weather and air pollution data.
+Example response body:
+```
+{
+    "message": "Failed to fetch weather and air pollution data."
 }
 ```
