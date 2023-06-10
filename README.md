@@ -53,12 +53,12 @@ image: A facial image file (JPEG or PNG format).
   "message": "Image does not contain a valid face."
 }
 ```
-## GET /classification_results/{user_uid}
+## GET /getdata/{user_uid}/latest
 This endpoint is used to retrieve the latest classification result for a specific user UID.
 
 ### Request
 ```
-GET /classification_results/{user_uid}
+GET /getdata/{user_uid}/latest
 ```
 user_uid: The unique identifier of the user.
 
@@ -84,7 +84,95 @@ user_uid: The unique identifier of the user.
   "message": "No classification results found for the specified user UID."
 }
 ```
-## DELETE /deleteall/{user_uid}
+
+## GET /getdata/{user_uid}
+This endpoint is used to retrieve all data from classification result for a specific user UID.
+
+### Request
+```
+GET /getdata/{user_uid}
+```
+user_uid: The unique identifier of the user.
+
+### Response
+• Success (200 OK)
+Example response body
+```
+[
+    {
+        "id": 1,
+        "image_url": "https://storage.googleapis.com/blabla/blabla.jpg",
+        "skin_type": "Sensitive",
+        "timestamp": "Sat, 10 Jun 2023 21:45:28 GMT",
+        "user_uid": "useruid"
+    },
+    {
+        "id": 2,
+        "image_url": "https://storage.googleapis.com/blabla/blabla2.jpg",
+        "skin_type": "Sensitive",
+        "timestamp": "Sat, 10 Jun 2023 21:46:33 GMT",
+        "user_uid": "useruid"
+    }
+]
+```
+• Error (404 Not Found)
+Error when no data is found in Database.
+```
+{
+    'message': 'No data found for the specified user UID.'
+}
+```
+• Error (500 Internal Server Error)
+Error in Internal Server
+```
+{
+     'message': 'Error: Failed to retrieve the data.',
+     'error': str(e)
+}
+```
+
+## GET /getdata/{user_uid}/{id}
+This endpoint is used to retrieve spesific classification result for a specific user UID and ID.
+
+### Request
+```
+GET /getdata/{user_uid}/{id}
+```
+- user_uid: The unique identifier of the user.
+- id: The unique indetifier data in database.
+
+### Response
+• Success (200 OK)
+```
+{
+  "id": "<classification_id>",
+  "user_uid": "<user_uid>",
+  "skin_type": "<predicted_skin_type>",
+  "image_url": "<image_url>",
+  "overall": "<overall_condition_text>",
+  "cleansing": "<cleansing_product>",
+  "toner": "<toner_product>",
+  "serum": "<serum_product>",
+  "moisturizer": "<moisturizer_product>",
+  "sunscreen": "<sunscreen_product>"
+}
+```
+• Error (404 Not Found)
+```
+{
+  "message": "No data found for the specified user UID and ID."
+}
+```
+• Error (500 Internal Server Error)
+Error in Internal Server
+```
+{
+     'message': 'Error: Failed to retrieve the data.',
+     'error': str(e)
+}
+```
+
+## DELETE /delete/{user_uid}
 This endpoint is used to delete all classification results and associated images for a specific user UID.
 
 ### Request
@@ -106,6 +194,39 @@ user_uid: The unique identifier of the user.
   "message": "Classification results not found."
 }
 ```
+
+## DELETE /delete/{user_uid}/{id}
+This endpoint is used to delete spesific classification results and associated images for a specific user UID and ID.
+
+### Request
+```
+DELETE /deleteall/{user_uid}/{id}
+```
+- user_uid: The unique identifier of the user.
+- id: The unique indetifier data in database.
+
+### Response
+• Success (200 OK)
+```
+{
+  'message': 'Record deleted successfully.'
+}
+```
+• Error (404 Not Found)
+```
+{
+  'message': 'Error: Record not found.'
+}
+```
+• Error (500 Internal Server Error)
+Error in Internal Server
+```
+{
+     'message': 'Error: Failed to delete the record.',
+     'error': str(e)
+}
+```
+
 ## GET /recommendation
 This endpoint retrieves skincare recommendations based on weather and air pollution data.
 
