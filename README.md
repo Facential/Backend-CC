@@ -177,7 +177,7 @@ This endpoint is used to delete all classification results and associated images
 
 ### Request
 ```
-DELETE /deleteall/{user_uid}
+DELETE /delete/{user_uid}
 ```
 user_uid: The unique identifier of the user.
 
