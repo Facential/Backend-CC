@@ -237,6 +237,9 @@ Content-Type: multipart/form-data
 latitude: <latitude>
 longitude: <longitude>
 ```
+- Latitude and Longitude maximal have eight characters after point.
+- Latitude and Longitude uses Decimal Degrees with Datum WGS 1984 and Projection EPSG:4326 
+- Example: -6.14116367,106.81437637
 
 ### Response
 • Success (200 OK)
