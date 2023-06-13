@@ -227,12 +227,12 @@ Error in Internal Server
 }
 ```
 
-## GET /recommendation
+## POST /recommendation
 This endpoint retrieves skincare recommendations based on weather and air pollution data.
 
 ### Request
 ```
-GET /recommendation
+POST /recommendation
 Content-Type: multipart/form-data
 latitude: <latitude>
 longitude: <longitude>
