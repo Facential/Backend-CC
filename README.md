@@ -6,6 +6,11 @@ This API allows you to classify skin types based on facial images and retrieve s
 - www.facential.site
 - http://34.101.100.21/
 
+
+# Design Architecture
+![Cloud Computing Design Architecture](https://github.com/Facential/Backend-Facential/blob/42cb36502fef2d9d07dc2daa6ed91225ddfc7532/Cuplikan%20layar%202023-06-16%20184835.png)
+
+
 # Endpoints
 ## GET /
 This endpoint is used to check the API's availability.
