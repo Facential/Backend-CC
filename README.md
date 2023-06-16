@@ -21,13 +21,13 @@ GET /
 ```
 ### Response
 • Success (200 OK)
-```
+```json
 {
   "message": "Success!"
 }
 ```
 • Error (404 Not Found)
-```
+```json
 {
   "message": "Error: Resource not found."
 }
@@ -47,13 +47,13 @@ image: A facial image file (JPEG or PNG format).
 
 ### Response
 • Success (200 OK)
-```
+```json
 {
   "skin_type": "<predicted_skin_type>"
 }
 ```
 • Error (400 Bad Request)
-```
+```json
 {
   "message": "Image does not contain a valid face."
 }
@@ -69,7 +69,7 @@ user_uid: The unique identifier of the user.
 
 ### Response
 • Success (200 OK)
-```
+```json
 {
   "id": "<classification_id>",
   "user_uid": "<user_uid>",
@@ -84,7 +84,7 @@ user_uid: The unique identifier of the user.
 }
 ```
 • Error (404 Not Found)
-```
+```json
 {
   "message": "No classification results found for the specified user UID."
 }
@@ -102,7 +102,7 @@ user_uid: The unique identifier of the user.
 ### Response
 • Success (200 OK)
 Example response body
-```
+```json
 [
     {
         "id": 1,
@@ -122,14 +122,14 @@ Example response body
 ```
 • Error (404 Not Found)
 Error when no data is found in Database.
-```
+```json
 {
     'message': 'No data found for the specified user UID.'
 }
 ```
 • Error (500 Internal Server Error)
 Error in Internal Server
-```
+```json
 {
      'message': 'Error: Failed to retrieve the data.',
      'error': str(e)
@@ -148,7 +148,7 @@ GET /getdata/{user_uid}/{id}
 
 ### Response
 • Success (200 OK)
-```
+```json
 {
   "id": "<classification_id>",
   "user_uid": "<user_uid>",
@@ -163,14 +163,14 @@ GET /getdata/{user_uid}/{id}
 }
 ```
 • Error (404 Not Found)
-```
+```json
 {
   "message": "No data found for the specified user UID and ID."
 }
 ```
 • Error (500 Internal Server Error)
 Error in Internal Server
-```
+```json
 {
      'message': 'Error: Failed to retrieve the data.',
      'error': str(e)
@@ -188,13 +188,13 @@ user_uid: The unique identifier of the user.
 
 ### Response
 • Success (200 OK)
-```
+```json
 {
   "message": "Classification results deleted successfully."
 }
 ```
 • Error (404 Not Found)
-```
+```json
 {
   "message": "Classification results not found."
 }
@@ -212,20 +212,20 @@ DELETE /deleteall/{user_uid}/{id}
 
 ### Response
 • Success (200 OK)
-```
+```json
 {
   'message': 'Record deleted successfully.'
 }
 ```
 • Error (404 Not Found)
-```
+```json
 {
   'message': 'Error: Record not found.'
 }
 ```
 • Error (500 Internal Server Error)
 Error in Internal Server
-```
+```json
 {
      'message': 'Error: Failed to delete the record.',
      'error': str(e)
@@ -249,7 +249,7 @@ longitude: <longitude>
 ### Response
 • Success (200 OK)
 Example response body:
-```
+```json
 {
     "temperature": 28,
     "pollution_index": 75,
@@ -263,7 +263,7 @@ Example response body:
 • Error (400 Bad Request)
 The request was missing the required parameters (latitude and longitude).
 Example response body:
-```
+```json
 {
     "message": "Latitude and longitude are required parameters."
 }
