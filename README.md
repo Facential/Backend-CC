@@ -124,15 +124,15 @@ Example response body
 Error when no data is found in Database.
 ```json
 {
-    'message': 'No data found for the specified user UID.'
+    "message": "No data found for the specified user UID."
 }
 ```
 • Error (500 Internal Server Error)
 Error in Internal Server
 ```json
 {
-     'message': 'Error: Failed to retrieve the data.',
-     'error': str(e)
+    "message": "Error: Failed to retrieve the data.",
+    "error": str(e)
 }
 ```
 
@@ -172,8 +172,8 @@ GET /getdata/{user_uid}/{id}
 Error in Internal Server
 ```json
 {
-     'message': 'Error: Failed to retrieve the data.',
-     'error': str(e)
+     "message": "Error: Failed to retrieve the data.",
+     "error": str(e)
 }
 ```
 
@@ -214,21 +214,21 @@ DELETE /deleteall/{user_uid}/{id}
 • Success (200 OK)
 ```json
 {
-  'message': 'Record deleted successfully.'
+  "message": "Record deleted successfully."
 }
 ```
 • Error (404 Not Found)
 ```json
 {
-  'message': 'Error: Record not found.'
+  "message": "Error: Record not found."
 }
 ```
 • Error (500 Internal Server Error)
 Error in Internal Server
 ```json
 {
-     'message': 'Error: Failed to delete the record.',
-     'error': str(e)
+     "message": "Error: Failed to delete the record.",
+     "error": str(e)
 }
 ```
 
@@ -272,7 +272,7 @@ Example response body:
 • Error (500 Internal Server Error)
 There was an error fetching weather and air pollution data.
 Example response body:
-```
+```json
 {
     "message": "Failed to fetch weather and air pollution data."
 }
